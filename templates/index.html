@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Our Grocery</title>
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+</head>
+<body>
+<div class="body">
+    <div class="head">
+<h1>Welcome to the grocery STATS</h1>
+      
+        </div>
+    <div class="buttons">
+<button onclick = "window.location.href='/add'">Add New Item</button>
+<button onclick="window.location.href='/analysis'"> Show Analysis</a></button>
+<button onclick="window.location.href='/people'">
+            Add / Remove People
+        </button>
+        </div>
+        <table>
+            <thead>
+                <th>Person</th>
+                <th>Item Name</th>
+                <th>Price</th>
+                <th> Date</th>
+                <th> Actions</th>
+            </thead>
+            <tbody>
+                {% for item in latest_item %}
+                <tr>
+                    <td data-label="Person">{{ item.name }}</td>
+<td data-label="Item">{{ item.item_name }}</td>
+<td data-label="Price">₹{{ item.price }}</td>
+<td data-label="Date">{{ item.date_added.split(" ")[0] }}</td>
+<td id="actions" data-label="Actions"><a href="/edit/{{ item.id }}" class="edit-btn">Edit</a> | <a href="/delete/{{ item.id }}" class="delete-btn" onclick="return confirm('Are you sure you want to delete this item?');">
+        Delete
+    </a>
+</td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

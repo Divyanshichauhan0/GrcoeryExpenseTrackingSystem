@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <style>
+        /* ---------- BASE STYLES ---------- */
+
+        .home-container {
+            margin-top: 80px;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            padding: 0 20px;
+        }
+
+        .home-container h1 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 40px;
+        }
+
+        /* Button group */
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* Main buttons */
+        .main-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 32px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 260px;
+            max-width: 90%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transition: 0.25s;
+        }
+
+        .main-btn.secondary {
+            background-color: #2196F3;
+        }
+
+        .main-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.22);
+        }
+
+        .main-btn:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+        }
+
+        /* ---------- DARK MODE SUPPORT ---------- */
+        body.dark-mode .home-container h1 {
+            color: #f0f0f0;
+        }
+
+        body.dark-mode .main-btn {
+            background-color: #555;
+        }
+
+        body.dark-mode .main-btn.secondary {
+            background-color: #777;
+        }
+
+
+        /* --------------------------------------------------
+           RESPONSIVE MEDIA QUERIES
+           -------------------------------------------------- */
+
+        /* Tablets and small laptops (max-width: 900px) */
+        @media (max-width: 900px) {
+            .home-container h1 {
+                font-size: 2rem;
+                margin-bottom: 30px;
+            }
+
+            .main-btn {
+                font-size: 1rem;
+                padding: 12px 26px;
+                width: 240px;
+            }
+        }
+
+        /* Mobile phones (max-width: 480px) */
+        @media (max-width: 480px) {
+            .home-container {
+                margin-top: 50px;
+            }
+
+            .home-container h1 {
+                font-size: 1.8rem;
+                margin-bottom: 28px;
+            }
+
+            .button-group {
+                gap: 16px;
+            }
+
+            .main-btn {
+                width: 100%;
+                padding: 12px;
+                font-size: 1rem;
+            }
+        }
+
+        /* Very small phones (max-width: 360px) */
+        @media (max-width: 360px) {
+            .home-container h1 {
+                font-size: 1.6rem;
+            }
+
+            .main-btn {
+                font-size: 0.95rem;
+                padding: 10px;
+                border-radius: 8px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="home-container">
+    <h1>Welcome to Grocery Tracker</h1>
+
+    <div class="button-group">
+        <button class="main-btn" onclick="window.location.href='/items'">
+            Go to Items Page
+        </button>
+
+        <button class="main-btn secondary" onclick="window.location.href='/people'">
+            Add / Remove People
+        </button>
+    </div>
+</div>
+
+</body>
+</html>

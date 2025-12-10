@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grocery Analysis</title>
+   <style>
+/* ---------- BASE STYLING ---------- */
+
+body {
+    background: #f4f4ff;
+    font-family: Poppins, sans-serif;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #444;
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+/* Main content boxes */
+.box {
+    background: #fff;
+    margin: 20px auto;
+    padding: 20px 30px;
+    width: 480px;
+    max-width: 90%; /* MOBILE FRIENDLY */
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+li {
+    padding: 10px 0;
+    font-size: 16px;
+    color: #333;
+    border-bottom: 1px solid #e6e6ff;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+/* Back button */
+a {
+    display: block;
+    width: 200px;
+    text-align: center;
+    margin: 30px auto 0;
+    text-decoration: none;
+    color: white;
+    background: #6a79ff;
+    padding: 12px 18px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: 0.25s ease;
+}
+
+a:hover {
+    background: #5867ff;
+}
+
+/* ------------------------------------
+   RESPONSIVE MEDIA QUERIES
+-------------------------------------- */
+
+/* Tablets (max-width: 768px) */
+@media (max-width: 768px) {
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .box {
+        padding: 18px 22px;
+    }
+
+    li {
+        font-size: 15px;
+    }
+}
+
+/* Mobile phones (max-width: 480px) */
+@media (max-width: 480px) {
+
+    h1 {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+    }
+
+    .box {
+        width: 95%;
+        padding: 16px 18px;
+    }
+
+    .title {
+        font-size: 18px;
+    }
+
+    li {
+        font-size: 14.5px;
+        padding: 8px 0;
+    }
+
+    a {
+        width: 90%;
+        padding: 12px;
+        font-size: 15px;
+    }
+}
+
+/* Extra small phones (max-width: 360px) */
+@media (max-width: 360px) {
+
+    h1 {
+        font-size: 1.4rem;
+    }
+
+    .box {
+        padding: 14px 15px;
+    }
+
+    .title {
+        font-size: 17px;
+    }
+
+    li {
+        font-size: 14px;
+    }
+
+    a {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+</style>
+
+</head>
+<body>
+
+    <h1>Grocery Spending Analysis</h1>
+
+    <div class="box">
+        <div class="title">Total Group Spending</div>
+        <p><strong>₹{{ total_group_spent }}</strong></p>
+
+        <div class="title">Fair Share Per Person</div>
+        <p><strong>₹{{ fair_share }}</strong></p>
+    </div>
+
+    <div class="box">
+        <div class="title">Total Spending by Each Person</div>
+        <ul>
+            {% for person in spending %}
+                <li>{{ person.name }} → ₹{{ person.total_spent }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="box">
+        <div class="title">Who Owes Whom?</div>
+        <ul>
+            {% if transactions %}
+                {% for t in transactions %}
+                    <li><strong>{{ t.from }}</strong> owes <strong>{{ t.to }}</strong> ₹{{ t.amount }}</li>
+                
+{% endfor %}
+            {% else %}
+                <li>No one owes anything. All expenses are balanced!</li>
+            {% endif %}
+        </ul>
+    </div>
+
+    <a href="/items">Back to Home</a>
+
+</body>
+</html>

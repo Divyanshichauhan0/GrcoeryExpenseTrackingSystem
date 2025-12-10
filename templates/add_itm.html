@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add New Item</title>
+
+    <!-- INTERNAL CSS -->
+   <style>
+/* Base Styling */
+body {
+    background: linear-gradient(135deg, #f2f6ff, #e3e9ff);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Form Container */
+.form-container {
+    width: 400px;
+    max-width: 90%; /* Responsive */
+    margin: 60px auto;
+    background: #ffffff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.10);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #3d3d3d;
+    font-weight: 600;
+}
+
+/* Labels & Inputs */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #444;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 18px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+/* Submit button */
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #6a79ff;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+button:hover {
+    background: #5465ff;
+}
+
+/* Back Link */
+a {
+    display: block;
+    margin-top: 15px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    color: #333;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* -------------------------
+   RESPONSIVE MEDIA QUERIES
+   ------------------------- */
+
+/* Tablets & small screens */
+@media (max-width: 768px) {
+    .form-container {
+        padding: 25px 30px;
+    }
+
+    button {
+        font-size: 15px;
+        padding: 11px;
+    }
+}
+
+/* Mobile Phones */
+@media (max-width: 480px) {
+    .form-container {
+        margin: 40px auto;
+        padding: 20px;
+    }
+
+    .form-container h2 {
+        font-size: 1.6rem;
+    }
+
+    input, select {
+        font-size: 14px;
+        padding: 9px;
+    }
+
+    button {
+        font-size: 15px;
+        padding: 12px;
+    }
+
+    a {
+        font-size: 14px;
+    }
+}
+
+/* Very small phones (320px and below) */
+@media (max-width: 360px) {
+    .form-container {
+        padding: 18px;
+        width: 92%;
+    }
+
+    input, select {
+        font-size: 13px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    a {
+        font-size: 13px;
+    }
+}
+</style>
+
+
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Add New Item</h2>
+
+        <form method="POST">
+
+            <label>Item Name:</label>
+            <input type="text" name="item_name" required>
+
+            <label>Price:</label>
+            <input type="number" name="price" required step="0.01">
+
+            <label>Purchased By:</label>
+            <select name="purchased_by" required>
+                {% for user in users %}
+                    <option value="{{ user.id }}">{{ user.name }}</option>
+                {% endfor %}
+            </select>
+
+            <button type="submit">Add Item</button>
+            <br><br>
+ <button onclick="window.location.href='/items'"> Back to Home</button>
+        </form>
+    </div>
+
+</body>
+</html>
