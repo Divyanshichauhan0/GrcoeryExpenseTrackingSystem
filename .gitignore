@@ -1,0 +1,14 @@
+# Environment variables
+.env
+
+# Python virtual environment
+venv/
+
+# SQLite files (not needed in Git)
+*.db
+
+# Python cache
+__pycache__/
+
+# Editor/IDE temporary files
+.idea/
